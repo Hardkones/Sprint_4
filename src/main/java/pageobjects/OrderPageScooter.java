@@ -1,4 +1,4 @@
-package PageObjects;
+package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -102,5 +102,38 @@ public class OrderPageScooter {
     }
     public boolean isOrderSuccessfullyCreatedIsDisplayed() {
         return driver.findElement(By.className("Order_Modal__YZ-d3")).isDisplayed();
+    }
+    public OrderPageScooter orderPlacement(String nameClient, String surnameClient, String adressClient, String metro, String telephoneNumber, String comment) {
+        clickOrderButton();
+        setName(nameClient);
+        setSurname(surnameClient);
+        setAdress(adressClient);
+        setMetroStation(metro);
+        setTelephone(telephoneNumber);
+        clickNextButton();
+        setDate();
+        setRentPeriod();
+        chooseColor();
+        writeComment(comment);
+        clickFinalOrderButton();
+        clickAgreeButton();
+        isOrderSuccessfullyCreatedIsDisplayed();
+        return this;
+    }
+    public OrderPageScooter orderPlacementWithOtherData(String nameClient, String surnameClient, String adressClient, String secondMetro, String telephoneNumber) {
+        clickOrderButton();
+        setName(nameClient);
+        setSurname(surnameClient);
+        setAdress(adressClient);
+        setOtherMetroStation(secondMetro);
+        setTelephone(telephoneNumber);
+        clickNextButton();
+        setOtherDate();
+        setOtherRentPeriod();
+        chooseOtherColor();
+        clickFinalOrderButton();
+        clickAgreeButton();
+        isOrderSuccessfullyCreatedIsDisplayed();
+        return this;
     }
 }

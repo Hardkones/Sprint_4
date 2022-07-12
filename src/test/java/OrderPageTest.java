@@ -1,4 +1,4 @@
-import PageObjects.OrderPageScooter;
+import pageobjects.OrderPageScooter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,39 +24,23 @@ public class OrderPageTest {
 
     @Test
     public void OrderPageScooterOrderPlacementWithSuccessfullyCreatedField() {
-        objOrderPage.clickOrderButton();
-        objOrderPage.setName("Есения");
-        objOrderPage.setSurname("Кадочкина");
-        objOrderPage.setAdress("Электродная 2");
-        objOrderPage.setMetroStation("шоссе энтузиастов");
-        objOrderPage.setTelephone("+79029521945");
-        objOrderPage.clickNextButton();
-        objOrderPage.setDate();//"22.09.2022"
-        objOrderPage.setRentPeriod();
-        objOrderPage.chooseColor();
-        objOrderPage.writeComment("Хочу кататься!!!");
-        objOrderPage.clickFinalOrderButton();
-        objOrderPage.clickAgreeButton();
-        objOrderPage.isOrderSuccessfullyCreatedIsDisplayed();
-
+        objOrderPage.orderPlacement(
+                "Есения",
+                "Кадочкина",
+                "Электродная 2",
+                "шоссе энтузиастов",
+                "+79029521945",
+                "хочу кататься!!!");
         assertTrue("Window order successfully created is not displayed", objOrderPage.isOrderSuccessfullyCreatedIsDisplayed());
     }
     @Test
     public void OrderPageScooterOrderPlacementWithSuccessfullyCreatedField2() {
-        objOrderPage.clickOrderButton();
-        objOrderPage.setName("сеня");
-        objOrderPage.setSurname("софт");
-        objOrderPage.setAdress("федеративный проспект 39");
-        objOrderPage.setOtherMetroStation("новогиреево");
-        objOrderPage.setTelephone("89832824710");
-        objOrderPage.clickNextButton();
-        objOrderPage.setOtherDate();//"29.07.2021"
-        objOrderPage.setOtherRentPeriod();
-        objOrderPage.chooseOtherColor();
-        objOrderPage.clickFinalOrderButton();
-        objOrderPage.clickAgreeButton();
-        objOrderPage.isOrderSuccessfullyCreatedIsDisplayed();
-
+        objOrderPage.orderPlacementWithOtherData(
+                "сеня",
+                "софт",
+                "федеративный проспект 39",
+                "новогиреево",
+                "89832824710");
         assertTrue("Window order successfully created is not displayed", objOrderPage.isOrderSuccessfullyCreatedIsDisplayed());
     }
 
